@@ -1,0 +1,119 @@
+﻿@model IEnumerable<Category>
+<!--Hero Section-->
+<div class="hero section">
+   @* <img class="img-fluid" src="~/Images/HeroImage.jpeg">*@
+
+
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="~/Images/hero1.jpeg" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+                <img src="~/Images/hero2.jpg" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+                <img src="~/Images/hero3.jpg" class="d-block w-100" alt="...">
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-target="#carouselExampleIndicators" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-target="#carouselExampleIndicators" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </button>
+    </div>
+
+
+    <div class="hero-heading">
+        <h2 class="hero-heading-text">Learn Full & Mern-Stack web development at <strong>WebELearning</strong></h2>
+        <a id="HeroRegisterButton" class="btn btn-outline-danger btn-lg text-light hero-register-button" data-toggle="modal" data-target="#UserRegistrationModal">Register</a>
+    </div>
+
+</div>
+
+<hr class="section-divider" />
+
+<!--Courses Section-->
+<div id="Courses" class="courses section">
+    <h3 class="section-header"><i class="fas fa-laptop-code mr-2 text-danger"></i>Courses and Articles</h3>
+    @{
+        const int itemsPerRow = 4;
+
+        var count = Model.Count() / itemsPerRow;
+        var catList = new List<Category>();
+
+    }
+    @for (int i = 0; i <= count; i++)
+    {
+        catList = Model.Skip(i * itemsPerRow).Take(itemsPerRow).ToList();
+
+        <partial name="_DisplayCardRowPartial" model="catList"/>
+
+
+
+    } 
+</div>
+
+<hr class="section-divider" />
+
+<!--Contact Us Section-->
+
+<div id="ContactUs" class="contact-us section">
+    <h3 class="col-md-5 section-header"><i class="fas fa-phone-alt mr-2 text-danger"></i>Contact Us</h3>
+    <div class="col-md-5">
+        Email us any questions or inquiries or call +961-1123456. We would be happy to answer your questions and set up a meeting with you.
+    </div>
+    <div class="mt-3">
+        <div class="col-md-8">
+            <form>
+                <input type="hidden" />
+                <div class="form-group">
+                    <label for="Name" class="control-label">Name: </label>
+                    <input id="Name" class="form-control" />
+
+                </div>
+                <div class="form-group">
+                    <label for="Email" class="control-label">Email: </label>
+                    <input id="Email" class="form-control" />
+
+                </div>
+                <div class="form-group">
+                    <label for="Subject" class="control-label">Subject: </label>
+                    <input id="Subject" class="form-control" />
+
+                </div>
+                <div class="form-group">
+                    <label for="MessageBody" class="control-label">Message: </label>
+                    <textarea id="Messagebody" cols="30" rows="10" class="form-control"></textarea>
+
+                </div>
+                <div class="form-group d-flex">
+                    <input type="button" value="Send Email" class="btn btn-outline-danger ml-auto" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<hr class="section-divider" />
+
+<!--About Us Section-->
+
+<div id="AboutUs" class="about-us section">
+    <h3 class="col-md-5 section-header"><i class="fas fa-chalkboard-teacher mr-2 text-danger"></i>About Us</h3>
+    <div class="mt-3 mb-5">
+        <div class="col-md-5">
+            <p>
+                <strong>WebELearning</strong>  refers to an educational platform that provides students with access to online courses and educational resources through the internet. This type of learning environment allows individuals to study at their own pace and place, and provides a flexible and convenient alternative to traditional classroom-based education. The curriculum is typically designed and delivered by experienced educators, and can include interactive multimedia, assessments, and collaborative tools to enhance the learning experience. Web-based e-Learning academies have become increasingly popular in recent years due to their accessibility, affordability, and effectiveness.
+            </p>
+        </div>
+    </div>
+</div>
+
